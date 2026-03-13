@@ -6,7 +6,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Clock,
   Shield,
   Heart,
   ArrowUp,
@@ -42,50 +41,41 @@ export function Footer() {
 
   return (
     <footer
-      className="bg-charcoal text-background pt-32 pb-12 relative overflow-hidden"
+      className="bg-charcoal text-background pt-16 pb-8 relative overflow-hidden"
       role="contentinfo"
     >
-      {/* Decorative vertical lines */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
-        <div className="container-wide h-full grid grid-cols-4 lg:grid-cols-12 gap-8">
-           {[...Array(13)].map((_, i) => (
-             <div key={i} className="w-px h-full bg-background" />
-           ))}
-        </div>
-      </div>
-
       <div className="container-wide relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 mb-16">
           {/* Brand Column */}
-          <div className="lg:col-span-5 space-y-10">
+          <div className="lg:col-span-5 space-y-6">
             <Link
               href="/"
-              className="inline-flex items-center gap-4 group"
+              className="inline-flex items-center gap-3 group"
             >
-              <div className="relative w-12 h-12 rounded-xl bg-background/5 border border-white/10 flex items-center justify-center overflow-hidden">
+              <div className="relative w-10 h-10 rounded-lg bg-background/5 border border-white/10 flex items-center justify-center overflow-hidden">
                 <Image
                   src="/logo.png"
                   alt="Psicologo Di Base Logo"
                   fill
-                  className="object-contain p-2"
+                  className="object-contain p-1.5"
                 />
               </div>
-              <span className="font-serif text-3xl font-medium tracking-tight text-background">
+              <span className="font-serif text-2xl font-medium tracking-tight text-background">
                 Psicologo Di Base
               </span>
             </Link>
             
-            <p className="text-background/60 text-lg leading-relaxed max-w-md">
+            <p className="text-background/60 text-base leading-relaxed max-w-md">
               Uno studio clinico fondato sulla professionalità scientifica e l'accoglienza umana. Accompagniamo le persone verso una salute mentale consapevole.
             </p>
 
-            {/* Micro Badges */}
-            <div className="flex flex-wrap items-center gap-6">
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-background/40">
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-5">
+              <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-widest font-semibold text-background/40">
                 <Shield className="h-3 w-3 text-accent" />
                 <span>Segreto Deontologico</span>
               </div>
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold text-background/40">
+              <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-widest font-semibold text-background/40">
                 <Heart className="h-3 w-3 text-accent" />
                 <span>Salute Etica</span>
               </div>
@@ -93,12 +83,12 @@ export function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <div className="lg:col-span-3 grid grid-cols-2 gap-8">
-            <div className="space-y-8">
-              <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">
+          <div className="lg:col-span-3 grid grid-cols-2 gap-6">
+            <div className="space-y-5">
+              <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-accent">
                 Navigazione
               </h3>
-              <ul className="space-y-4" role="list">
+              <ul className="space-y-3" role="list">
                 {footerLinks.informazioni.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -112,11 +102,11 @@ export function Footer() {
               </ul>
             </div>
             
-            <div className="space-y-8">
-              <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">
+            <div className="space-y-5">
+              <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-accent">
                 Servizi
               </h3>
-              <ul className="space-y-4" role="list">
+              <ul className="space-y-3" role="list">
                 {footerLinks.servizi.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -132,53 +122,53 @@ export function Footer() {
           </div>
 
           {/* Contact Details */}
-          <div className="lg:col-span-4 space-y-10 bg-background/5 p-10 rounded-[2.5rem] border border-white/5">
-            <h3 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">
+          <div className="lg:col-span-4 space-y-6 bg-background/5 p-6 rounded-2xl border border-white/5">
+            <h3 className="text-xs uppercase tracking-[0.2em] font-semibold text-accent">
               Riferimenti
             </h3>
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <MapPin className="h-5 w-5 text-accent shrink-0" />
+            <div className="space-y-5">
+              <div className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                 <p className="text-sm text-background/70 leading-relaxed font-medium">
                   {siteConfig.contact.address}
                 </p>
               </div>
-              <div className="flex items-center gap-4">
-                <Phone className="h-5 w-5 text-accent shrink-0" />
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-accent shrink-0" />
                 <a href={`tel:${siteConfig.contact.phone}`} className="text-sm text-background/70 hover:text-background transition-colors font-medium">
                   {siteConfig.contact.phone}
                 </a>
               </div>
-              <div className="flex items-center gap-4">
-                <Mail className="h-5 w-5 text-accent shrink-0" />
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-accent shrink-0" />
                 <a href={`mailto:${siteConfig.contact.email}`} className="text-sm text-background/70 hover:text-background transition-colors font-medium">
                   {siteConfig.contact.email}
                 </a>
               </div>
             </div>
             
-            <div className="pt-8 border-t border-white/5">
-               <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-green-500/80 animate-pulse" />
-                  <span className="text-xs font-semibold text-background/40 uppercase tracking-widest">Studio Attivo oggi</span>
+            <div className="pt-5 border-t border-white/5">
+               <div className="flex items-center gap-2">
+                 <div className="w-1.5 h-1.5 rounded-full bg-green-500/80 animate-pulse" />
+                 <span className="text-xs font-semibold text-background/40 uppercase tracking-widest">Studio Attivo oggi</span>
                </div>
             </div>
           </div>
         </div>
 
-        {/* Legal & Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex flex-col items-center md:items-start gap-2">
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col items-center md:items-start gap-1">
             <p className="text-xs text-background/30 font-medium">
               © {currentYear} Psicologo Di Base. Studio di Psicologia e Psicoterapia.
             </p>
-            <p className="text-[10px] text-background/20 font-bold uppercase tracking-widest">
+            <p className="text-[11px] text-background/20 font-semibold uppercase tracking-widest">
               Titolari: Camilla, Benedetta, Alessandra
             </p>
           </div>
 
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               {footerLinks.legale.map((link) => (
                 <Link
                   key={link.name}

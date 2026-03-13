@@ -30,26 +30,26 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
       className="group"
     >
-      <div className="h-full p-8 md:p-10 rounded-3xl bg-secondary/30 hover:bg-secondary/50 transition-all duration-500 flex flex-col items-start border border-transparent hover:border-accent/10">
-        {/* Subtle Icon Container */}
-        <div className="w-10 h-10 mb-8 flex items-center justify-center rounded-full bg-background/80 text-accent/80 group-hover:bg-accent group-hover:text-background transition-all duration-500 shadow-sm">
+      <div className="h-full p-6 md:p-8 rounded-2xl bg-secondary/30 hover:bg-secondary/50 transition-all duration-500 flex flex-col items-start border border-transparent hover:border-accent/10">
+        {/* Icon */}
+        <div className="w-9 h-9 mb-5 flex items-center justify-center rounded-full bg-background/80 text-accent/80 group-hover:bg-accent group-hover:text-background transition-all duration-500 shadow-sm">
           <Icon className="h-4 w-4" aria-hidden="true" />
         </div>
 
         {/* Title */}
-        <h3 className="font-serif text-2xl font-medium text-foreground mb-4 group-hover:text-accent transition-colors duration-500">
+        <h3 className="font-serif text-xl font-medium text-foreground mb-3 group-hover:text-accent transition-colors duration-500">
           {service.title}
         </h3>
 
         {/* Description */}
-        <p className="text-muted-foreground/90 text-sm leading-relaxed mb-8 flex-grow">
+        <p className="text-muted-foreground/90 text-sm leading-relaxed mb-6 flex-grow">
           {service.shortDescription}
         </p>
 
-        {/* Footer Link / Detail */}
-        <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-semibold text-accent/60 group-hover:text-accent transition-colors duration-500">
+        {/* Footer */}
+        <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-accent/60 group-hover:text-accent transition-colors duration-500">
           <span className="w-4 h-px bg-accent/30" />
-          Dettagli del servizio
+          Dettagli
         </div>
       </div>
     </motion.div>
@@ -65,7 +65,7 @@ export function ServicesSection() {
     >
       <div className="container-wide">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20 lg:mb-24">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -73,15 +73,15 @@ export function ServicesSection() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-accent">
                 I nostri servizi
               </span>
-              <div className="h-px w-10 bg-accent/40" />
+              <div className="h-px w-8 bg-accent/40" />
             </div>
             <h2
               id="services-heading"
-              className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-[1.1]"
+              className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-foreground leading-[1.1]"
             >
               Un supporto strutturato per il tuo <span className="italic text-accent/90">benessere</span>.
             </h2>
@@ -92,37 +92,37 @@ export function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="text-muted-foreground/80 text-lg max-w-sm"
+            className="text-muted-foreground/80 text-base max-w-sm"
           >
             Percorsi clinici personalizzati, fondati sulla competenza e sul rispetto dei tempi di ogni persona.
           </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {services.slice(0, 6).map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
 
-        {/* Detailed Services Link */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-          className="mt-20 pt-10 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-8"
+          className="mt-12 pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-6"
         >
-          <p className="text-muted-foreground font-medium text-center md:text-left">
+          <p className="text-muted-foreground font-medium text-center md:text-left text-sm">
             Vuoi approfondire come lavoriamo o hai bisogno di un consiglio iniziale?
           </p>
-          <div className="flex items-center gap-6">
-            <Button asChild variant="outline" size="xl" className="rounded-full px-10 hover:bg-secondary/50 transition-all border-accent/20 text-accent">
-              <Link href="/#faq">Leggi le FAQ</Link>
+          <div className="flex items-center gap-4">
+            <Button asChild variant="outline" size="lg" className="rounded-full hover:bg-secondary/50 transition-all border-accent/20 text-accent">
+              <Link href="/contatti">Leggi le FAQ</Link>
             </Button>
-            <Button asChild size="xl" className="rounded-full px-10 shadow-lg shadow-primary/5">
-              <Link href="/#contatti">
-                Contattaci ora
+            <Button asChild size="lg" className="rounded-full shadow-lg shadow-primary/5">
+              <Link href="/contatti">
+                Contattaci
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

@@ -26,55 +26,48 @@ function TeamMemberCard({ member, index }: TeamMemberCardProps) {
       className="group"
     >
       <div className="flex flex-col h-full">
-        {/* Profile Image - High End Presentation */}
-        <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden mb-8 shadow-sm group-hover:shadow-xl transition-all duration-700 bg-secondary/30">
+        {/* Profile Image */}
+        <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6 shadow-sm group-hover:shadow-xl transition-all duration-700 bg-secondary/30">
           <Image
             src={imageConfig.src}
             alt={imageConfig.alt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
+            className="object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[0.2] group-hover:grayscale-0"
             priority={index < 3}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-60" aria-hidden="true" />
-          
-          {/* Subtle Label */}
-          <div className="absolute top-6 left-6">
-            <div className="px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-md border border-white/20">
-               <span className="text-[9px] uppercase tracking-widest font-bold text-accent">Psicologa</span>
-            </div>
-          </div>
         </div>
 
         {/* Content */}
         <div className="flex flex-col items-start">
-          <h3 className="font-serif text-3xl font-medium text-foreground mb-1 group-hover:text-accent transition-colors duration-500">
+          <h3 className="font-serif text-2xl font-medium text-foreground mb-0.5 group-hover:text-accent transition-colors duration-500">
             {member.name}
           </h3>
-          <p className="text-[10px] uppercase tracking-[0.2em] font-sans font-bold text-accent/70 mb-6">
+          <p className="text-xs uppercase tracking-[0.15em] font-sans font-semibold text-accent/70 mb-4">
             {member.id === 'camilla' || member.id === 'alessandra' ? 'Psicoterapeuta' : 'Psicologa Clinica'}
           </p>
 
-          <p className="text-muted-foreground/80 text-sm leading-relaxed mb-8 max-w-[90%]">
+          <p className="text-muted-foreground/80 text-sm leading-relaxed mb-6 max-w-[90%]">
             {member.shortBio}
           </p>
 
-          {/* Specialized Areas */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          {/* Areas */}
+          <div className="flex flex-wrap gap-1.5 mb-6">
             {member.areas.slice(0, 3).map((area) => (
               <span
                 key={area}
-                className="text-[10px] font-medium text-muted-foreground bg-secondary/50 px-3 py-1 rounded-full border border-border/20"
+                className="text-[11px] font-medium text-muted-foreground bg-secondary/50 px-2.5 py-0.5 rounded-full border border-border/20"
               >
                 {area}
               </span>
             ))}
           </div>
           
-          <Button asChild variant="link" className="mt-auto p-0 h-auto text-accent hover:text-accent/80 font-serif italic text-lg group/btn">
-            <Link href="/#contatti" className="flex items-center gap-2">
+          <Button asChild variant="link" className="mt-auto p-0 h-auto text-accent hover:text-accent/80 font-serif italic text-base group/btn">
+            <Link href="/contatti" className="flex items-center gap-2">
               Conosci meglio {member.name.split(' ')[1]}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
             </Link>
           </Button>
         </div>
@@ -91,23 +84,23 @@ export function TeamSection() {
       aria-labelledby="team-heading"
     >
       <div className="container-wide">
-        {/* Section Header - Editorial Layout */}
-        <div className="max-w-4xl mb-24 md:mb-32">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
-                Il Nostro Team
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-accent">
+                Il nostro team
               </span>
-              <div className="h-px w-10 bg-accent/40" />
+              <div className="h-px w-8 bg-accent/40" />
             </div>
             <h2
               id="team-heading"
-              className="font-serif text-4xl md:text-5xl lg:text-7xl font-medium text-foreground leading-[1.05] mb-10 text-pretty"
+              className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-foreground leading-[1.08] mb-6 text-pretty"
             >
               Professionalità clinica ed una <span className="italic text-accent/90">sensibilità</span> condivisa.
             </h2>
@@ -118,38 +111,38 @@ export function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-muted-foreground/80 text-xl max-w-2xl leading-relaxed"
+            className="text-muted-foreground/80 text-base max-w-2xl leading-relaxed"
           >
             Siamo tre professioniste che hanno scelto di unire le proprie competenze per creare un centro di eccellenza basato sulla cura e sull'ascolto.
           </motion.p>
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-14">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={member.id} member={member} index={index} />
           ))}
         </div>
 
-        {/* Closing Trust Component */}
+        {/* Trust Component */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="bg-secondary/20 rounded-[3rem] p-12 md:p-20 flex flex-col items-center text-center"
+          className="bg-secondary/20 rounded-2xl p-8 md:p-12 flex flex-col items-center text-center"
         >
-          <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-10">
-            <GraduationCap className="h-8 w-8 text-accent" />
+          <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+            <GraduationCap className="h-6 w-6 text-accent" />
           </div>
-          <h3 className="font-serif text-3xl md:text-4xl font-medium text-foreground mb-6 max-w-2xl">
+          <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-4 max-w-2xl">
             Tutte le nostre professioniste sono iscritte all'Albo degli Psicologi e seguono percorsi di aggiornamento continuo.
           </h3>
-          <p className="text-muted-foreground/80 max-w-xl mb-10 text-lg">
+          <p className="text-muted-foreground/80 max-w-xl mb-8 text-base">
             La tua sicurezza clinica è la nostra priorità. Ogni intervento segue il codice deontologico e le linee guida nazionali.
           </p>
-          <Button asChild size="xl" className="rounded-full px-12">
-            <Link href="/#contatti">Contatta lo studio</Link>
+          <Button asChild size="lg" className="rounded-full px-8">
+            <Link href="/contatti">Contatta lo studio</Link>
           </Button>
         </motion.div>
       </div>

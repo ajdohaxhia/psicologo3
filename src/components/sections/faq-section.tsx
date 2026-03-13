@@ -17,23 +17,23 @@ export function FAQSection() {
       aria-labelledby="faq-heading"
     >
       <div className="container-narrow">
-        {/* Section Header */}
-        <div className="mb-20">
+        {/* Header */}
+        <div className="mb-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-accent">
                 Supporto & Informazioni
               </span>
-              <div className="h-px w-10 bg-accent/40" />
+              <div className="h-px w-8 bg-accent/40" />
             </div>
             <h2
               id="faq-heading"
-              className="font-serif text-4xl md:text-5xl font-medium text-foreground leading-tight mb-6"
+              className="font-serif text-3xl md:text-4xl font-medium text-foreground leading-tight mb-4"
             >
               Risposte alle tue <span className="italic text-accent/90">domande</span> più comuni.
             </h2>
@@ -44,13 +44,13 @@ export function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-muted-foreground/80 text-lg max-w-2xl leading-relaxed"
+            className="text-muted-foreground/80 text-base max-w-2xl leading-relaxed"
           >
-            Navigare il mondo della psicologia può generare dubbi. Qui trovi le risposte che cerchiamo di dare più spesso ai nostri pazienti.
+            Navigare il mondo della psicologia può generare dubbi. Qui trovi le risposte che diamo più spesso ai nostri pazienti.
           </motion.p>
         </div>
 
-        {/* FAQ Accordion - Editorial Style */}
+        {/* FAQ Accordion */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,19 +60,19 @@ export function FAQSection() {
           <Accordion
             type="single"
             collapsible
-            className="w-full space-y-4"
+            className="w-full space-y-3"
             aria-label="Domande frequenti"
           >
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
                 key={faq.id}
                 value={faq.id}
-                className="group bg-background border border-border/40 rounded-3xl px-8 overflow-hidden data-[state=open]:border-accent/40 data-[state=open]:shadow-xl transition-all duration-500"
+                className="group bg-background border border-border/40 rounded-2xl px-6 overflow-hidden data-[state=open]:border-accent/40 data-[state=open]:shadow-lg transition-all duration-500"
               >
-                <AccordionTrigger className="text-left font-serif text-xl font-medium text-foreground hover:text-accent transition-colors py-7 hover:no-underline">
-                  <span className="pr-6">{faq.question}</span>
+                <AccordionTrigger className="text-left font-serif text-lg font-medium text-foreground hover:text-accent transition-colors py-5 hover:no-underline">
+                  <span className="pr-4">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground/80 pb-8 leading-relaxed text-base border-t border-border/20 pt-6">
+                <AccordionContent className="text-muted-foreground/80 pb-6 leading-relaxed text-sm border-t border-border/20 pt-4">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -86,16 +86,16 @@ export function FAQSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-16 flex flex-col items-center gap-4 py-10 border-t border-border/20"
+          className="mt-10 flex flex-col items-center gap-3 py-8 border-t border-border/20"
         >
-          <p className="text-muted-foreground/60 text-sm font-medium tracking-wide">
-            NON HAI TROVATO QUELLO CHE CERCAVI?
+          <p className="text-muted-foreground/60 text-sm font-medium tracking-wide uppercase">
+            Non hai trovato quello che cercavi?
           </p>
           <a
-            href="/#contatti"
-            className="font-serif text-2xl italic text-accent hover:text-accent/80 transition-colors flex items-center gap-3 decoration-accent/20 underline-offset-8 hover:underline"
+            href="/contatti"
+            className="font-serif text-xl italic text-accent hover:text-accent/80 transition-colors flex items-center gap-2 decoration-accent/20 underline-offset-8 hover:underline"
           >
-            Scrivici direttamente per un dubbio specifico
+            Scrivici direttamente
           </a>
         </motion.div>
       </div>

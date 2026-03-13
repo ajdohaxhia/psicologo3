@@ -31,7 +31,7 @@ const trustPoints = [
   },
   {
     icon: BookOpen,
-    title: "Formazione Ecm",
+    title: "Formazione ECM",
     description: "Aggiornamento scientifico continuo",
   },
 ];
@@ -39,7 +39,7 @@ const trustPoints = [
 export function TrustSection() {
   return (
     <section
-      className="py-16 md:py-24 bg-secondary/10 overflow-hidden"
+      className="py-10 md:py-14 bg-secondary/10 overflow-hidden"
       aria-labelledby="trust-heading"
     >
       <div className="container-wide">
@@ -47,23 +47,23 @@ export function TrustSection() {
           I nostri capisaldi professionali
         </h2>
         
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-6">
            <motion.div 
              initial={{ opacity: 0, x: -20 }}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 1 }}
-             className="max-w-xs lg:border-r border-border/40 lg:pr-12"
+             className="max-w-xs lg:border-r border-border/40 lg:pr-8"
            >
-              <p className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent mb-4">
+              <p className="text-xs uppercase tracking-[0.2em] font-sans font-semibold text-accent mb-3">
                 Garanzia Clinica
               </p>
-              <p className="font-serif text-2xl italic text-foreground leading-snug">
+              <p className="font-serif text-xl italic text-foreground leading-snug">
                 Un impegno costante per la tua salute psicologica.
               </p>
            </motion.div>
 
-           <div className="flex-1 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-8 lg:gap-4 md:gap-12 w-full">
+           <div className="flex-1 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6 lg:gap-3 md:gap-8 w-full">
             {trustPoints.map((point, index) => {
               const Icon = point.icon;
               return (
@@ -75,13 +75,13 @@ export function TrustSection() {
                   transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="flex flex-col items-center lg:items-start text-center lg:text-left group"
                 >
-                  <div className="w-10 h-10 mb-4 rounded-full bg-background flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-9 h-9 mb-3 rounded-full bg-background flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
                     <Icon className="h-4 w-4 text-accent/80" aria-hidden="true" />
                   </div>
-                  <h3 className="font-serif text-sm font-medium text-foreground mb-1">
+                  <h3 className="font-serif text-sm font-medium text-foreground mb-0.5">
                     {point.title}
                   </h3>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 leading-relaxed font-bold">
+                  <p className="text-[11px] uppercase tracking-wider text-muted-foreground/60 leading-relaxed font-semibold">
                     {point.description}
                   </p>
                 </motion.div>
