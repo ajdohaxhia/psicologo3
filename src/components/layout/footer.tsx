@@ -16,16 +16,16 @@ import { siteConfig } from "@/lib/data/content";
 
 const footerLinks = {
   servizi: [
-    { name: "Colloqui individuali", href: "/#servizi" },
-    { name: "Sostegno psicologico", href: "/#servizi" },
-    { name: "Percorsi di ascolto", href: "/#servizi" },
-    { name: "Supporto famiglie", href: "/#servizi" },
+    { name: "Colloqui individuali", href: "/servizi" },
+    { name: "Sostegno psicologico", href: "/servizi" },
+    { name: "Percorsi di ascolto", href: "/servizi" },
+    { name: "Supporto famiglie", href: "/servizi" },
   ],
   informazioni: [
-    { name: "Chi siamo", href: "/#chi-siamo" },
-    { name: "Il nostro team", href: "/#team" },
-    { name: "Domande frequenti", href: "/#faq" },
-    { name: "Contatti", href: "/#contatti" },
+    { name: "Chi siamo", href: "/chi-siamo" },
+    { name: "Il nostro team", href: "/chi-siamo" },
+    { name: "Domande frequenti", href: "/contatti" },
+    { name: "Contatti", href: "/contatti" },
   ],
   legale: [
     { name: "Privacy Policy", href: "/privacy" },

@@ -77,7 +77,7 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5"
           >
             <Button asChild size="xl" className="rounded-full px-10 bg-primary hover:bg-primary/95 text-primary-foreground text-base shadow-lg shadow-primary/5 group">
-              <Link href="/#contatti">
+              <Link href="/contatti">
                 Prenota un colloquio
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
@@ -88,7 +88,7 @@ export function HeroSection() {
               size="xl"
               className="rounded-full px-10 text-base border-border/60 hover:bg-secondary/50 backdrop-blur-sm transition-all"
             >
-              <Link href="/#servizi">Scopri i nostri servizi</Link>
+              <Link href="/servizi">Scopri i nostri servizi</Link>
             </Button>
           </motion.div>
 

@@ -10,10 +10,9 @@ import { siteConfig } from "@/lib/data/content";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Servizi", href: "/#servizi" },
-  { name: "Chi siamo", href: "/#chi-siamo" },
-  { name: "FAQ", href: "/#faq" },
-  { name: "Contatti", href: "/#contatti" },
+  { name: "Servizi", href: "/servizi" },
+  { name: "Chi Siamo", href: "/chi-siamo" },
+  { name: "Contatti", href: "/contatti" },
 ];
 
 export function Header() {
@@ -86,7 +85,7 @@ export function Header() {
           </div>
           <div className="h-6 w-px bg-border/60 mx-2" />
           <Button asChild variant="default" size="sm" className="rounded-full px-6 bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm transition-all hover:translate-y-[-1px]">
-            <Link href="/#contatti">Prenota un colloquio</Link>
+            <Link href="/contatti">Prenota un colloquio</Link>
           </Button>
         </div>
 
@@ -149,7 +148,7 @@ export function Header() {
                   className="w-full text-lg rounded-full py-8 shadow-md"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Link href="/#contatti">Prenota un colloquio</Link>
+                  <Link href="/contatti">Prenota un colloquio</Link>
                 </Button>
                 <div className="flex flex-col gap-2 items-center text-muted-foreground">
                   <p className="text-sm font-medium uppercase tracking-widest opacity-60">Contatti</p>

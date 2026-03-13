@@ -61,7 +61,7 @@ export function CTASection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <Button asChild size="xl" className="rounded-full px-12 py-8 text-lg group bg-accent text-charcoal hover:bg-accent/90">
-            <Link href="/#contatti">
+            <Link href="/contatti">
               Prenota il primo colloquio
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
