@@ -10,6 +10,7 @@ import {
   Send,
   CheckCircle,
   Shield,
+  MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,295 +37,217 @@ export function ContactSection() {
   return (
     <section
       id="contatti"
-      className="section-spacing bg-secondary/30 relative"
+      className="section-spacing bg-background relative"
       aria-labelledby="contact-heading"
     >
-      {/* Decorative element */}
-      <div
-        className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"
-        aria-hidden="true"
-      />
-
       <div className="container-wide">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <p className="text-sm text-accent uppercase tracking-wide mb-4 flex items-center justify-center gap-3">
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-            Contatti
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-          </p>
-          <h2
-            id="contact-heading"
-            className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6"
-          >
-            Iniziamo insieme il tuo percorso
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Compila il modulo per richiedere informazioni o prenotare un primo
-            colloquio. Ti risponderemo entro 24-48 ore lavorative.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-          {/* Contact Form */}
+        <div className="grid lg:grid-cols-2 gap-20 lg:gap-32">
+          {/* Left Side: Editorial Content & Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-3"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-card border border-border rounded-xl p-8 text-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="h-8 w-8 text-accent" />
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
+                Contatti & Sede
+              </span>
+              <div className="h-px w-10 bg-accent/40" />
+            </div>
+            
+            <h2
+              id="contact-heading"
+              className="font-serif text-4xl md:text-5xl lg:text-7xl font-medium text-foreground leading-[1.05] mb-10 text-pretty"
+            >
+              Iniziamo insieme il tuo <span className="italic text-accent/90">percorso</span> di crescita.
+            </h2>
+            
+            <p className="text-muted-foreground/80 text-xl max-w-xl mb-16 leading-relaxed">
+              Siamo a tua disposizione per chiarimenti, prime consulenze o per fissare un appuntamento presso il nostro studio.
+            </p>
+
+            {/* Contact Details Grid */}
+            <div className="grid sm:grid-cols-2 gap-10 mb-16">
+              <div className="flex flex-col gap-4 p-8 rounded-[2rem] bg-secondary/20 hover:bg-secondary/30 transition-colors duration-500">
+                <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-accent shadow-sm">
+                  <Phone className="h-4 w-4" />
                 </div>
-                <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
-                  Messaggio inviato con successo
-                </h3>
-                <p className="text-muted-foreground mb-2">
-                  Ti risponderemo al più presto.
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Se hai urgenza, puoi chiamarci al{" "}
-                  <a
-                    href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                    className="text-accent hover:underline"
-                  >
+                <div>
+                  <h4 className="font-serif text-lg font-medium mb-1">Telefono</h4>
+                  <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`} className="text-muted-foreground hover:text-accent transition-colors">
                     {siteConfig.contact.phone}
                   </a>
-                </p>
-              </motion.div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-card border border-border rounded-xl p-6 md:p-8"
-              >
-                <div className="space-y-6">
-                  {/* Name */}
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-foreground">
-                      Nome e cognome <span className="text-accent">*</span>
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Il tuo nome completo"
-                      className="bg-background border-border focus:border-accent"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-foreground">
-                      Email <span className="text-accent">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="La tua email"
-                      className="bg-background border-border focus:border-accent"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-foreground">
-                      Telefono <span className="text-muted-foreground">(opzionale)</span>
-                    </Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="Il tuo numero di telefono"
-                      className="bg-background border-border focus:border-accent"
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-foreground">
-                      Messaggio <span className="text-accent">*</span>
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      placeholder="Raccontaci brevemente come possiamo aiutarti..."
-                      className="bg-background border-border focus:border-accent resize-none"
-                    />
-                  </div>
-
-                  {/* Privacy consent */}
-                  <div className="flex items-start gap-3 py-2">
-                    <Checkbox
-                      id="privacy"
-                      required
-                      className="mt-1 border-border data-[state=checked]:border-accent data-[state=checked]:bg-accent"
-                    />
-                    <Label
-                      htmlFor="privacy"
-                      className="text-sm text-muted-foreground leading-relaxed cursor-pointer"
-                    >
-                      Ho letto e accetto la{" "}
-                      <a
-                        href="/privacy"
-                        className="text-accent hover:underline"
-                      >
-                        Privacy Policy
-                      </a>{" "}
-                      e acconsento al trattamento dei miei dati personali.
-                    </Label>
-                  </div>
-
-                  {/* Submit */}
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full text-base"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <span className="animate-spin mr-2">⏳</span>
-                        Invio in corso...
-                      </>
-                    ) : (
-                      <>
-                        Invia messaggio
-                        <Send className="ml-2 h-4 w-4" aria-hidden="true" />
-                      </>
-                    )}
-                  </Button>
                 </div>
+              </div>
 
-                {/* Privacy note */}
-                <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                  <Shield className="h-3 w-3" aria-hidden="true" />
-                  <span>I tuoi dati sono protetti e non vengono condivisi con terzi.</span>
+              <div className="flex flex-col gap-4 p-8 rounded-[2rem] bg-secondary/20 hover:bg-secondary/30 transition-colors duration-500">
+                <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-accent shadow-sm">
+                  <Mail className="h-4 w-4" />
                 </div>
-              </form>
-            )}
-          </motion.div>
+                <div>
+                  <h4 className="font-serif text-lg font-medium mb-1">Email</h4>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="text-muted-foreground hover:text-accent transition-colors break-all">
+                    {siteConfig.contact.email}
+                  </a>
+                </div>
+              </div>
 
-          {/* Contact Info & Map */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2 space-y-6"
-          >
-            {/* Contact Info */}
-            <div className="bg-card border border-border rounded-xl p-6 md:p-8">
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-6">
-                Informazioni di contatto
-              </h3>
-              <ul className="space-y-5">
-                <li className="flex items-start gap-4">
-                  <MapPin
-                    className="h-5 w-5 text-accent shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="font-medium text-foreground mb-1">Indirizzo</p>
-                    <p className="text-muted-foreground text-sm">
-                      {/* EDITABLE: Address */}
-                      {siteConfig.contact.address}
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Phone
-                    className="h-5 w-5 text-accent shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="font-medium text-foreground mb-1">Telefono</p>
-                    <a
-                      href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                      className="text-muted-foreground text-sm hover:text-accent transition-colors"
-                    >
-                      {/* EDITABLE: Phone */}
-                      {siteConfig.contact.phone}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Mail
-                    className="h-5 w-5 text-accent shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="font-medium text-foreground mb-1">Email</p>
-                    <a
-                      href={`mailto:${siteConfig.contact.email}`}
-                      className="text-muted-foreground text-sm hover:text-accent transition-colors"
-                    >
-                      {/* EDITABLE: Email */}
-                      {siteConfig.contact.email}
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <Clock
-                    className="h-5 w-5 text-accent shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="font-medium text-foreground mb-1">Orari</p>
-                    <p className="text-muted-foreground text-sm">
-                      {/* EDITABLE: Hours */}
-                      {siteConfig.contact.hours}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Su appuntamento
-                    </p>
-                  </div>
-                </li>
-              </ul>
+              <div className="flex flex-col gap-4 p-8 rounded-[2rem] bg-secondary/20 hover:bg-secondary/30 transition-colors duration-500">
+                <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-accent shadow-sm">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="font-serif text-lg font-medium mb-1">Sede</h4>
+                  <p className="text-muted-foreground">{siteConfig.contact.address}</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4 p-8 rounded-[2rem] bg-secondary/20 hover:bg-secondary/30 transition-colors duration-500">
+                <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-accent shadow-sm">
+                  <Clock className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="font-serif text-lg font-medium mb-1">Orari</h4>
+                  <p className="text-muted-foreground">{siteConfig.contact.hours}</p>
+                </div>
+              </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden">
-              {/* Map container */}
-              <div className="relative aspect-[4/3] bg-secondary/50">
-                <iframe
+            {/* Map Integration - Refined */}
+            <div className="relative h-64 rounded-[2.5rem] overflow-hidden group shadow-lg border border-border/30">
+               <iframe
                   src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.655039748781!2d${siteConfig.contact.mapCoordinates.lng}!3d${siteConfig.contact.mapCoordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDU0JzEwLjEiTiAxMsKwMjknNDcuMCJF!5e0!3m2!1sit!2sit!4v1234567890`}
                   width="100%"
                   height="100%"
-                  style={{ border: 0, position: "absolute", inset: 0 }}
+                  style={{ border: 0, position: "absolute", inset: 0, filter: "grayscale(1) contrast(0.8) brightness(1.1)" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Mappa dello studio Psicologo Di Base"
                 />
-              </div>
-              
-              {/* Map footer */}
-              <div className="p-4 border-t border-border">
-                <p className="text-sm text-muted-foreground flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
-                  {/* EDITABLE: Directions placeholder */}
-                  <span>Qualche metro dalla fermata Metro A</span>
-                </p>
-              </div>
+                <div className="absolute inset-0 bg-accent/10 group-hover:bg-transparent transition-all duration-700 pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 lg:left-8 lg:right-8 bg-background/80 backdrop-blur-md px-6 py-3 rounded-full flex items-center justify-between shadow-sm">
+                  <span className="text-xs font-medium text-foreground/80">Raggiungibile con Metro A (Porta Furba)</span>
+                  <a href={`https://maps.google.com?q=${siteConfig.contact.address}`} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest text-accent hover:text-accent/80 transition-colors">Ottieni indicazioni</a>
+                </div>
             </div>
+          </motion.div>
+
+          {/* Right Side: Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="h-full flex flex-col items-center justify-center p-12 text-center bg-secondary/20 rounded-[3rem] border border-accent/10"
+              >
+                <div className="w-20 h-20 rounded-full bg-accent text-background flex items-center justify-center mb-8 shadow-xl shadow-accent/20">
+                  <CheckCircle className="h-10 w-10" />
+                </div>
+                <h3 className="font-serif text-3xl font-medium text-foreground mb-4">
+                  Richiesta Inviata
+                </h3>
+                <p className="text-muted-foreground/80 text-lg max-w-sm mb-10 leading-relaxed">
+                  Abbiamo ricevuto il tuo messaggio. Una delle nostre dottoresse ti ricontatterà entro 48 ore lavorative.
+                </p>
+                <Button variant="outline" size="xl" className="rounded-full px-10" onClick={() => setIsSubmitted(false)}>
+                  Invia un nuovo messaggio
+                </Button>
+              </motion.div>
+            ) : (
+              <div className="bg-secondary/10 p-10 md:p-16 rounded-[3rem] border border-border/40">
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent">
+                    <MessageSquare className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-2xl font-medium text-foreground">Scrivici un messaggio</h3>
+                    <p className="text-sm text-muted-foreground">Risponderemo nel più breve tempo possibile.</p>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid sm:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <Label htmlFor="name" className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground ml-1">Nome e Cognome</Label>
+                      <Input
+                        id="name"
+                        required
+                        placeholder="Nome completo"
+                        className="rounded-2xl bg-background border-border/40 focus:border-accent py-6 h-auto"
+                      />
+                    </div>
+                    <div className="space-y-3">
+                      <Label htmlFor="email" className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground ml-1">Email</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        required
+                        placeholder="La tua email"
+                        className="rounded-2xl bg-background border-border/40 focus:border-accent py-6 h-auto"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label htmlFor="phone" className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground ml-1">Telefono (Opzionale)</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="Il tuo numero"
+                      className="rounded-2xl bg-background border-border/40 focus:border-accent py-6 h-auto"
+                    />
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label htmlFor="message" className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground ml-1">Come possiamo aiutarti?</Label>
+                    <Textarea
+                      id="message"
+                      required
+                      placeholder="Raccontaci brevemente il motivo del tuo contatto..."
+                      className="rounded-2xl bg-background border-border/40 focus:border-accent min-h-[160px] p-5 h-auto resize-none"
+                    />
+                  </div>
+
+                  <div className="flex items-start gap-3 py-2">
+                    <Checkbox id="privacy" required className="mt-1 rounded-sm border-accent/40 data-[state=checked]:bg-accent" />
+                    <Label htmlFor="privacy" className="text-xs text-muted-foreground/80 leading-relaxed cursor-pointer select-none">
+                      Accetto il trattamento dei dati personali secondo la <a href="/privacy" className="text-accent hover:underline font-medium">Privacy Policy</a> per la gestione della richiesta.
+                    </Label>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="xl"
+                    className="w-full rounded-2xl py-8 text-lg font-medium shadow-lg shadow-primary/5 transition-all hover:translate-y-[-2px]"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-background animate-pulse" />
+                        Invio in corso...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        Invia Richiesta
+                        <Send className="h-4 w-4" />
+                      </span>
+                    )}
+                  </Button>
+                </form>
+
+                <div className="mt-8 flex items-center justify-center gap-3 text-[10px] uppercase tracking-widest font-bold text-muted-foreground/40">
+                  <Shield className="h-3 w-3" />
+                  Connessione sicura e protetta
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

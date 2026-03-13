@@ -2,85 +2,98 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/data/content";
 
 export function CTASection() {
   return (
     <section
-      className="section-spacing bg-background relative overflow-hidden"
+      className="py-32 md:py-48 bg-charcoal text-background relative overflow-hidden"
       aria-labelledby="cta-heading"
     >
-      {/* Decorative elements */}
-      <div
-        className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-1/4 left-0 w-64 h-64 bg-accent/3 rounded-full blur-3xl"
-        aria-hidden="true"
-      />
+      {/* Editorial Decorative Background */}
+      <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-accent/10 blur-[120px] rounded-full translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-accent/5 blur-[120px] rounded-full -translate-x-1/2" />
+      </div>
 
-      <div className="container-wide relative z-10">
+      <div className="container-narrow relative z-10 text-center">
         <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12"
+        >
+          <div className="inline-flex items-center gap-4 px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-10">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-background/60">Contatto Prioritario</span>
+          </div>
+        </motion.div>
+
+        <motion.h2
+          id="cta-heading"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
+          transition={{ duration: 1, delay: 0.1 }}
+          className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium mb-10 leading-[1.05] text-pretty max-w-4xl mx-auto"
         >
-          {/* Decorative element */}
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-8"
-          >
-            <span className="font-serif text-2xl text-accent italic">PdB</span>
-          </motion.div>
+          Ogni grande <span className="italic text-accent">cambiamento</span> inizia con un piccolo passo.
+        </motion.h2>
 
-          <h2
-            id="cta-heading"
-            className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6 leading-tight"
-          >
-            Pronto a iniziare il tuo percorso?
-          </h2>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
-            Il primo passo è spesso il più difficile, ma non devi farlo da
-            solo. Contattaci per un primo colloquio conoscitivo.
-          </p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="text-background/60 text-xl md:text-2xl max-w-2xl mx-auto mb-16 leading-relaxed"
+        >
+          Non aspettare che il peso diventi insostenibile. Inizia oggi a prenderti cura della tua salute mentale.
+        </motion.p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button asChild size="lg" className="text-base px-8">
-              <Link href="/#contatti">
-                Prenota un colloquio
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="text-base px-8"
-            >
-              <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}>
-                <Phone className="mr-2 h-4 w-4" aria-hidden="true" />
-                {siteConfig.contact.phone}
-              </a>
-            </Button>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <Button asChild size="xl" className="rounded-full px-12 py-8 text-lg group bg-accent text-charcoal hover:bg-accent/90">
+            <Link href="/#contatti">
+              Prenota il primo colloquio
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+          
+          <Button asChild variant="outline" size="xl" className="rounded-full px-12 py-8 text-lg border-white/10 hover:bg-white/5 text-background">
+            <a href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}>
+              <MessageSquare className="mr-3 h-5 w-5 text-accent" />
+              Scrivici per info
+            </a>
+          </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mt-20 flex flex-wrap justify-center gap-10 opacity-30 grayscale contrast-125"
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+              <span className="text-[10px] font-bold">24H</span>
+            </div>
+            <span className="text-[10px] uppercase tracking-widest font-bold">Risposta Veloce</span>
           </div>
-
-          {/* Reassurance */}
-          <p className="text-sm text-muted-foreground">
-            Risposta entro 24-48 ore • Massima riservatezza • Su appuntamento
-          </p>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+              <span className="text-[10px] font-bold">100%</span>
+            </div>
+            <span className="text-[10px] uppercase tracking-widest font-bold">Sicuro & Protetto</span>
+          </div>
         </motion.div>
       </div>
     </section>

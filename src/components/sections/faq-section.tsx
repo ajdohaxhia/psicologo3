@@ -13,41 +13,49 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="section-spacing bg-background"
+      className="section-spacing bg-secondary/10"
       aria-labelledby="faq-heading"
     >
       <div className="container-narrow">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <p className="text-sm text-accent uppercase tracking-wide mb-4 flex items-center justify-center gap-3">
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-            Domande frequenti
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-          </p>
-          <h2
-            id="faq-heading"
-            className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6"
+        {/* Section Header */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Hai delle domande?
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Ecco le risposte alle domande più comuni. Se non trovi quello che
-            cerchi, non esitare a contattarci.
-          </p>
-        </motion.div>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
+                Supporto & Informazioni
+              </span>
+              <div className="h-px w-10 bg-accent/40" />
+            </div>
+            <h2
+              id="faq-heading"
+              className="font-serif text-4xl md:text-5xl font-medium text-foreground leading-tight mb-6"
+            >
+              Risposte alle tue <span className="italic text-accent/90">domande</span> più comuni.
+            </h2>
+          </motion.div>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-muted-foreground/80 text-lg max-w-2xl leading-relaxed"
+          >
+            Navigare il mondo della psicologia può generare dubbi. Qui trovi le risposte che cerchiamo di dare più spesso ai nostri pazienti.
+          </motion.p>
+        </div>
 
-        {/* FAQ Accordion */}
+        {/* FAQ Accordion - Editorial Style */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 1, delay: 0.3 }}
         >
           <Accordion
             type="single"
@@ -55,16 +63,16 @@ export function FAQSection() {
             className="w-full space-y-4"
             aria-label="Domande frequenti"
           >
-            {faqs.map((faq) => (
+            {faqs.map((faq, index) => (
               <AccordionItem
                 key={faq.id}
                 value={faq.id}
-                className="bg-card border border-border rounded-xl px-6 overflow-hidden data-[state=open]:border-accent/30 data-[state=open]:shadow-sm transition-all duration-300"
+                className="group bg-background border border-border/40 rounded-3xl px-8 overflow-hidden data-[state=open]:border-accent/40 data-[state=open]:shadow-xl transition-all duration-500"
               >
-                <AccordionTrigger className="text-left font-medium text-foreground hover:text-accent transition-colors py-5 hover:no-underline">
-                  <span className="pr-4">{faq.question}</span>
+                <AccordionTrigger className="text-left font-serif text-xl font-medium text-foreground hover:text-accent transition-colors py-7 hover:no-underline">
+                  <span className="pr-6">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed text-sm">
+                <AccordionContent className="text-muted-foreground/80 pb-8 leading-relaxed text-base border-t border-border/20 pt-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -72,23 +80,23 @@ export function FAQSection() {
           </Accordion>
         </motion.div>
 
-        {/* Additional help */}
+        {/* Help CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 text-center"
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mt-16 flex flex-col items-center gap-4 py-10 border-t border-border/20"
         >
-          <p className="text-muted-foreground text-sm">
-            Non hai trovato la risposta che cercavi?{" "}
-            <a
-              href="/#contatti"
-              className="text-accent hover:underline font-medium"
-            >
-              Contattaci direttamente
-            </a>
+          <p className="text-muted-foreground/60 text-sm font-medium tracking-wide">
+            NON HAI TROVATO QUELLO CHE CERCAVI?
           </p>
+          <a
+            href="/#contatti"
+            className="font-serif text-2xl italic text-accent hover:text-accent/80 transition-colors flex items-center gap-3 decoration-accent/20 underline-offset-8 hover:underline"
+          >
+            Scrivici direttamente per un dubbio specifico
+          </a>
         </motion.div>
       </div>
     </section>

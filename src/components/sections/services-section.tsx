@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, User, Heart, Users, Brain, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { services, type Service } from "@/lib/data/content";
 
 const iconMap = {
@@ -25,42 +24,34 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+      className="group"
     >
-      <Card className="h-full bg-card hover:bg-secondary/30 transition-all duration-300 border-border hover:border-accent/30 group cursor-default">
-        <CardContent className="p-6 md:p-8">
-          {/* Icon - fixed size container */}
-          <div className="w-12 h-12 mb-5 flex items-center justify-center rounded-xl bg-accent/10 text-accent group-hover:bg-accent/15 transition-colors">
-            <Icon className="h-5 w-5" aria-hidden="true" />
-          </div>
+      <div className="h-full p-8 md:p-10 rounded-3xl bg-secondary/30 hover:bg-secondary/50 transition-all duration-500 flex flex-col items-start border border-transparent hover:border-accent/10">
+        {/* Subtle Icon Container */}
+        <div className="w-10 h-10 mb-8 flex items-center justify-center rounded-full bg-background/80 text-accent/80 group-hover:bg-accent group-hover:text-background transition-all duration-500 shadow-sm">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </div>
 
-          {/* Title */}
-          <h3 className="font-serif text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
-            {service.title}
-          </h3>
+        {/* Title */}
+        <h3 className="font-serif text-2xl font-medium text-foreground mb-4 group-hover:text-accent transition-colors duration-500">
+          {service.title}
+        </h3>
 
-          {/* Description */}
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            {service.shortDescription}
-          </p>
+        {/* Description */}
+        <p className="text-muted-foreground/90 text-sm leading-relaxed mb-8 flex-grow">
+          {service.shortDescription}
+        </p>
 
-          {/* Details list - visible on hover */}
-          <ul className="mt-4 space-y-1.5 opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-40 transition-all duration-300">
-            {service.details.slice(0, 3).map((detail) => (
-              <li
-                key={detail}
-                className="text-xs text-muted-foreground flex items-center gap-2"
-              >
-                <span className="w-1 h-1 rounded-full bg-accent shrink-0" />
-                {detail}
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+        {/* Footer Link / Detail */}
+        <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest font-semibold text-accent/60 group-hover:text-accent transition-colors duration-500">
+          <span className="w-4 h-px bg-accent/30" />
+          Dettagli del servizio
+        </div>
+      </div>
     </motion.div>
   );
 }
@@ -73,55 +64,69 @@ export function ServicesSection() {
       aria-labelledby="services-heading"
     >
       <div className="container-wide">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <p className="text-sm text-accent uppercase tracking-wide mb-4 flex items-center justify-center gap-3">
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-            I nostri servizi
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-          </p>
-          <h2
-            id="services-heading"
-            className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6"
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20 lg:mb-24">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl"
           >
-            Supporto psicologico per ogni esigenza
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Offriamo una gamma completa di servizi psicologici, sempre con un
-            approccio umano, professionale e riservato.
-          </p>
-        </motion.div>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
+                I nostri servizi
+              </span>
+              <div className="h-px w-10 bg-accent/40" />
+            </div>
+            <h2
+              id="services-heading"
+              className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-[1.1]"
+            >
+              Un supporto strutturato per il tuo <span className="italic text-accent/90">benessere</span>.
+            </h2>
+          </motion.div>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="text-muted-foreground/80 text-lg max-w-sm"
+          >
+            Percorsi clinici personalizzati, fondati sulla competenza e sul rispetto dei tempi di ogni persona.
+          </motion.p>
+        </div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.slice(0, 6).map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
 
-        {/* CTA */}
+        {/* Detailed Services Link */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          className="mt-20 pt-10 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-8"
         >
-          <p className="text-muted-foreground mb-6">
-            Non sai quale servizio è più adatto a te?
+          <p className="text-muted-foreground font-medium text-center md:text-left">
+            Vuoi approfondire come lavoriamo o hai bisogno di un consiglio iniziale?
           </p>
-          <Button asChild variant="outline" size="lg" className="text-base">
-            <Link href="/#contatti">
-              Richiedi una consulenza
-              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Link>
-          </Button>
+          <div className="flex items-center gap-6">
+            <Button asChild variant="outline" size="xl" className="rounded-full px-10 hover:bg-secondary/50 transition-all border-accent/20 text-accent">
+              <Link href="/#faq">Leggi le FAQ</Link>
+            </Button>
+            <Button asChild size="xl" className="rounded-full px-10 shadow-lg shadow-primary/5">
+              <Link href="/#contatti">
+                Contattaci ora
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+         </div>
         </motion.div>
       </div>
     </section>

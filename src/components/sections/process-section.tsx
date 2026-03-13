@@ -1,86 +1,82 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, MapPin, Heart } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Heart, ChevronRight } from "lucide-react";
 
 const steps = [
   {
-    number: "01",
+    number: "I",
     icon: Phone,
-    title: "Primo contatto",
+    title: "Incontro Iniziale",
     description:
-      "Ci contatti via email, telefono o modulo. Ti risponderemo entro 24-48 ore per fissare un appuntamento.",
+      "Tutto inizia con un contatto. Puoi scriverci o chiamarci per una breve consulenza telefonica gratuita.",
   },
   {
-    number: "02",
+    number: "II",
     icon: MessageCircle,
-    title: "Colloquio conoscitivo",
+    title: "Ascolto Attivo",
     description:
-      "Nel primo incontro racconti la tua storia e le tue difficoltà. Insieme valutiamo come possiamo aiutarti.",
+      "Il primo colloquio in studio serve a conoscerci, esplorare la tua domanda e definire insieme i bisogni.",
   },
   {
-    number: "03",
+    number: "III",
     icon: MapPin,
-    title: "Percorso personalizzato",
+    title: "Pianificazione",
     description:
-      "Definiamo obiettivi e modalità del percorso, adattandolo alle tue esigenze e ai tuoi tempi.",
+      "Definiamo un percorso su misura, stabilendo frequenza e obiettivi in base alla tua situazione specifica.",
   },
   {
-    number: "04",
+    number: "IV",
     icon: Heart,
-    title: "Accompagnamento",
+    title: "Cambiamento",
     description:
-      "Ti accompagniamo con competenza e umanità verso una maggiore consapevolezza e benessere.",
+      "Ti accompagniamo passo dopo passo verso una nuova consapevolezza, in un ambiente protetto e professionale.",
   },
 ];
 
 export function ProcessSection() {
   return (
     <section
-      className="section-spacing bg-secondary/30 relative overflow-hidden"
+      id="process"
+      className="section-spacing bg-background relative overflow-hidden"
       aria-labelledby="process-heading"
     >
-      {/* Decorative elements */}
-      <div
-        className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"
-        aria-hidden="true"
-      />
-
       <div className="container-wide">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <p className="text-sm text-accent uppercase tracking-wide mb-4 flex items-center justify-center gap-3">
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-            Come funziona
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-          </p>
-          <h2
-            id="process-heading"
-            className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6"
-          >
-            Il tuo percorso in quattro passi
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Un percorso semplice e chiaro, dove ogni passo è pensato per farti
-            sentire accolto e supportato.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          {/* Left: Sticky Header Content */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[10px] uppercase tracking-[0.3em] font-sans font-semibold text-accent">
+                Metodologia
+              </span>
+              <div className="h-px w-10 bg-accent/40" />
+            </div>
+            
+            <h2
+              id="process-heading"
+              className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-[1.1] mb-8 text-pretty"
+            >
+              Come lavoriamo, <span className="italic text-accent/90">insieme</span>.
+            </h2>
+            
+            <p className="text-muted-foreground/80 text-xl leading-relaxed mb-10 max-w-sm">
+              Trasparenza e professionalità sono le basi su cui costruiamo ogni rapporto terapeutico.
+            </p>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connecting line - desktop */}
-          <div
-            className="hidden lg:block absolute top-24 left-[12.5%] right-[12.5%] h-px bg-border"
-            aria-hidden="true"
-          />
+            <div className="p-8 rounded-[2.5rem] bg-secondary/20 border border-border/40 inline-flex items-center gap-4 group">
+               <div className="w-12 h-12 rounded-full bg-accent text-background flex items-center justify-center shadow-lg shadow-accent/20">
+                  <Phone className="h-5 w-5" />
+               </div>
+               <div>
+                  <p className="text-sm font-semibold text-foreground">Pronto per iniziare?</p>
+                  <p className="text-xs text-muted-foreground">La prima telefonata è informativa.</p>
+               </div>
+               <ChevronRight className="h-4 w-4 text-accent ml-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          {/* Right: Steps Timeline */}
+          <div className="lg:col-span-7 space-y-24 lg:pt-8">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -88,36 +84,33 @@ export function ProcessSection() {
                   key={step.number}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative"
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative pl-20 md:pl-32 group"
                 >
-                  <div className="bg-card border border-border rounded-xl p-6 md:p-8 h-full hover:border-accent/30 hover:shadow-lg transition-all duration-300 group">
-                    {/* Number with icon - fixed positioning */}
-                    <div className="mb-5">
-                      <span className="text-5xl font-serif font-bold text-accent/15 group-hover:text-accent/25 transition-colors">
-                        {step.number}
-                      </span>
-                    </div>
-                    
-                    {/* Icon in circle - separate from number */}
-                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/15 transition-colors">
-                      <Icon
-                        className="h-5 w-5 text-accent"
-                        aria-hidden="true"
-                      />
-                    </div>
+                  {/* Step Number Decorative */}
+                  <div className="absolute left-0 top-0 font-serif text-6xl md:text-8xl italic text-accent/5 group-hover:text-accent/10 transition-colors duration-700">
+                    {step.number}
+                  </div>
+                  
+                  {/* Icon Indicator */}
+                  <div className="absolute left-0 top-2 md:top-6 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-secondary/30 flex items-center justify-center text-accent/60 group-hover:text-accent group-hover:bg-accent/10 transition-all duration-700 border border-border/40">
+                    <Icon className="h-5 w-5 md:h-6 md:w-6" />
+                  </div>
 
-                    {/* Title */}
-                    <h3 className="font-serif text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
+                  <div className="relative z-10">
+                    <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-4 group-hover:translate-x-2 transition-transform duration-700">
                       {step.title}
                     </h3>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
                       {step.description}
                     </p>
                   </div>
+
+                  {/* Connecting Line */}
+                  {index !== steps.length - 1 && (
+                    <div className="absolute left-[23px] md:left-[31px] top-20 md:top-28 bottom-[-80px] w-px bg-gradient-to-b from-border/60 to-transparent" />
+                  )}
                 </motion.div>
               );
             })}

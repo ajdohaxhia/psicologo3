@@ -6,137 +6,136 @@ import Image from "next/image";
 import { ArrowRight, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { images } from "@/lib/data/images";
+import { siteConfig } from "@/lib/data/content";
 
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[90vh] flex items-center overflow-hidden bg-background"
       aria-labelledby="hero-heading"
     >
-      {/* Background image with overlay */}
-      <div className="absolute inset-0" aria-hidden="true">
+      {/* Background with subtle texture/softness */}
+      <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         <Image
           src={images.hero.src}
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center scale-105"
         />
-        {/* Gradient overlay - warm and soft */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+        {/* Editorial overlay - subtle gradients for a layered feel */}
+        <div className="absolute inset-0 bg-background/90 md:bg-background/80 lg:bg-background/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="container-wide relative z-10 py-24 md:py-32 lg:py-40">
-        <div className="max-w-3xl">
-          {/* Pre-headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-sm md:text-base text-muted-foreground tracking-wide uppercase mb-6 flex items-center gap-3"
+        <div className="max-w-4xl">
+          {/* Tagline / Pre-headline */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-4 mb-8"
           >
-            <span className="w-8 h-px bg-accent" aria-hidden="true" />
-            Supporto psicologico professionale
-          </motion.p>
+            <span className="w-12 h-px bg-accent/60" aria-hidden="true" />
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-sans font-semibold text-accent leading-none">
+              Iniziativa di Psicologia Clinica
+            </span>
+          </motion.div>
 
-          {/* Main headline */}
+          {/* Main Headline */}
           <motion.h1
             id="hero-heading"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-[1.1] tracking-tight mb-8"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-foreground leading-[1.05] tracking-tight mb-10 text-pretty"
           >
             Uno spazio per
             <br />
-            <span className="text-accent">ascoltarsi</span>,
+            <span className="italic text-accent/90">ascoltarsi</span>,
             <br />
             capirsi, crescere.
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Subtext */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed mb-10"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl leading-relaxed mb-12 text-balance"
           >
-            Psicologo Di Base accompagna le persone in percorsi di crescita e
-            benessere emotivo. Uno studio fondato da tre psicologhe, con un
-            approccio umano e professionale.
+            Psicologo Di Base accompagna le persone in percorsi di benessere emotivo e consapevolezza. Uno studio fondato sul valore dell'ascolto, della competenza clinica e dell'umanità.
           </motion.p>
 
-          {/* CTAs */}
+          {/* Action Blocks */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-start gap-4 mb-12"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5"
           >
-            <Button asChild size="lg" className="text-base px-8">
+            <Button asChild size="xl" className="rounded-full px-10 bg-primary hover:bg-primary/95 text-primary-foreground text-base shadow-lg shadow-primary/5 group">
               <Link href="/#contatti">
                 Prenota un colloquio
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              size="lg"
-              className="text-base px-8 bg-background/50 backdrop-blur-sm"
+              size="xl"
+              className="rounded-full px-10 text-base border-border/60 hover:bg-secondary/50 backdrop-blur-sm transition-all"
             >
-              <Link href="/#servizi">Scopri i servizi</Link>
+              <Link href="/#servizi">Scopri i nostri servizi</Link>
             </Button>
           </motion.div>
 
-          {/* Quick contact */}
+          {/* Trust Indicators / Subtle Contact */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-            className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground"
+            transition={{ duration: 1.5, delay: 1 }}
+            className="mt-20 pt-10 border-t border-border/30 flex flex-wrap items-center gap-10"
           >
-            <a
-              href="tel:+390612345678"
-              className="flex items-center gap-2 hover:text-foreground transition-colors"
-            >
-              <Phone className="h-4 w-4 text-accent" aria-hidden="true" />
-              <span>+39 06 1234567</span>
-            </a>
-            <a
-              href="mailto:info@psicologodibase.it"
-              className="flex items-center gap-2 hover:text-foreground transition-colors"
-            >
-              <Mail className="h-4 w-4 text-accent" aria-hidden="true" />
-              <span>info@psicologodibase.it</span>
-            </a>
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase font-sans tracking-widest text-muted-foreground/60 mb-2">Contatti Diretti</span>
+              <div className="flex gap-8">
+                <a
+                  href={`tel:${siteConfig.contact.phone}`}
+                  className="flex items-center gap-2.5 text-sm font-medium text-foreground/70 hover:text-accent transition-colors group"
+                >
+                  <Phone className="h-4 w-4 text-accent/60 group-hover:text-accent transition-colors" />
+                  <span>{siteConfig.contact.phone}</span>
+                </a>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="flex items-center gap-2.5 text-sm font-medium text-foreground/70 hover:text-accent transition-colors group"
+                >
+                  <Mail className="h-4 w-4 text-accent/60 group-hover:text-accent transition-colors" />
+                  <span>{siteConfig.contact.email}</span>
+                </a>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Aesthetic Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-12 right-12 hidden lg:block"
         aria-hidden="true"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-xs text-muted-foreground uppercase tracking-widest">
-            Scopri
+        <div className="flex flex-col items-center gap-6">
+          <span className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground/40 [writing-mode:vertical-lr]">
+            Scorri per scoprire
           </span>
-          <div className="w-5 h-8 border-2 border-muted-foreground/40 rounded-full flex justify-center pt-1.5">
-            <span className="w-1 h-2 bg-muted-foreground/40 rounded-full" />
-          </div>
-        </motion.div>
+          <div className="w-px h-24 bg-gradient-to-b from-accent/40 to-transparent" />
+        </div>
       </motion.div>
     </section>
   );

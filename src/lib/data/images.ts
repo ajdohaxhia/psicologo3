@@ -24,11 +24,11 @@ export const images = {
   team: {
     // Group photo of three women psychologists
     group: {
-      // EDITABLE: Replace with actual group photo
-      src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=500&fit=crop",
+      // Bespoke premium team photo
+      src: "/team-premium.png",
       alt: "Il team di Psicologo Di Base - tre psicologhe professioniste",
-      width: 800,
-      height: 500,
+      width: 1024,
+      height: 1024,
     },
     // Individual portraits - three women
     camilla: {
@@ -59,11 +59,11 @@ export const images = {
   // Calm, professional, atmospheric
   // ============================================
   hero: {
-    // EDITABLE: Replace with branded hero image
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop",
+    // Bespoke premium hero image
+    src: "/hero-premium.png",
     alt: "Ambiente professionale e accogliente per i colloqui psicologici",
-    width: 1920,
-    height: 1080,
+    width: 1024,
+    height: 1024,
   },
 
   // ============================================
