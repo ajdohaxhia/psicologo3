@@ -72,26 +72,26 @@
      ============================================ */
   
   /* Backgrounds */
-  --background: #F9F8F6;
+  --background: #F0EDE8;
   --foreground: #1A1A1A;
   
-  --card: #FFFFFF;
+  --card: #FAFAF8;
   --card-foreground: #1A1A1A;
   
-  --popover: #FFFFFF;
+  --popover: #FAFAF8;
   --popover-foreground: #1A1A1A;
   
   /* Primary - Charcoal */
   --primary: #1A1A1A;
-  --primary-foreground: #F9F8F6;
+  --primary-foreground: #F0EDE8;
   
   /* Secondary - Stone */
   --secondary: #EAE7E1;
   --secondary-foreground: #1A1A1A;
   
   /* Muted - Softened Stone */
-  --muted: #F2F0ED;
-  --muted-foreground: #666666;
+  --muted: #E8E4DE;
+  --muted-foreground: #4A4A4A;
   
   /* Accent - Steel Blue */
   --accent: #7B8FA1;
@@ -106,7 +106,7 @@
   --ring: #7B8FA1;
   
   /* Sidebar */
-  --sidebar: #F2F0ED;
+  --sidebar: #E8E4DE;
   --sidebar-foreground: #1A1A1A;
   --sidebar-primary: #1A1A1A;
   --sidebar-primary-foreground: #F9F8F6;
@@ -184,8 +184,26 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(123, 143, 161, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 85% 75%, rgba(123, 143, 161, 0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(110, 125, 141, 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 40% at 70% 10%, rgba(234, 231, 225, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 60% at 20% 80%, rgba(232, 228, 222, 0.25) 0%, transparent 50%);
   }
   
   /* Refined focus states */

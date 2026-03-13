@@ -114,22 +114,23 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Map Integration - Refined */}
-            <div className="relative h-64 rounded-[2.5rem] overflow-hidden group shadow-lg border border-border/30">
+            {/* Interactive Map */}
+            <div className="relative h-80 md:h-96 rounded-[2.5rem] overflow-hidden group shadow-lg border border-border/30">
                <iframe
-                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.655039748781!2d${siteConfig.contact.mapCoordinates.lng}!3d${siteConfig.contact.mapCoordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDU0JzEwLjEiTiAxMsKwMjknNDcuMCJF!5e0!3m2!1sit!2sit!4v1234567890`}
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=12.48%2C41.89%2C12.52%2C41.92&layer=mapnik&marker=41.9028%2C12.4964"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, position: "absolute", inset: 0, filter: "grayscale(1) contrast(0.8) brightness(1.1)" }}
+                  style={{ border: 0, position: "absolute", inset: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
                   title="Mappa dello studio Psicologo Di Base"
                 />
-                <div className="absolute inset-0 bg-accent/10 group-hover:bg-transparent transition-all duration-700 pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 lg:left-8 lg:right-8 bg-background/80 backdrop-blur-md px-6 py-3 rounded-full flex items-center justify-between shadow-sm">
-                  <span className="text-xs font-medium text-foreground/80">Raggiungibile con Metro A (Porta Furba)</span>
-                  <a href={`https://maps.google.com?q=${siteConfig.contact.address}`} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest text-accent hover:text-accent/80 transition-colors">Ottieni indicazioni</a>
+                <div className="absolute bottom-6 left-6 right-6 lg:left-8 lg:right-8 bg-background/90 backdrop-blur-md px-6 py-4 rounded-2xl flex items-center justify-between shadow-md">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="h-4 w-4 text-accent" />
+                    <span className="text-sm font-medium text-foreground/80">{siteConfig.contact.address}</span>
+                  </div>
+                  <a href={`https://maps.google.com?q=${siteConfig.contact.address}`} target="_blank" rel="noopener noreferrer" className="text-xs font-bold uppercase tracking-widest text-accent hover:text-accent/80 transition-colors whitespace-nowrap ml-4">Indicazioni →</a>
                 </div>
             </div>
           </motion.div>
