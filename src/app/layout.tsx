@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Crimson_Pro, Geist_Mono } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-// Inter - Clean, professional sans-serif for body text
-const inter = Inter({
+// DM Sans - Clean, modern sans-serif for body & UI
+const dmSans = DM_Sans({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  featureSettings: ["rlig", "calt"],
 });
 
-// Crimson Pro - Elegant, warm serif for headlines
-const crimsonPro = Crimson_Pro({
+// Cormorant Garamond - Refined luxury serif for headlines
+const cormorant = Cormorant_Garamond({
   variable: "--font-crimson",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -92,7 +92,7 @@ export default function RootLayout({
   return (
     <html lang="it" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${crimsonPro.variable} ${geistMono.variable} antialiased font-sans bg-background text-foreground`}
+        className={`${dmSans.variable} ${cormorant.variable} ${geistMono.variable} antialiased font-sans bg-background text-foreground`}
       >
         {children}
         <Toaster />
